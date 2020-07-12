@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { dailyWeather } from '../reducers/weatherReducer'
 import cityList from '../data/city.list.json'
 import './SearchBar.css'
 
@@ -14,7 +12,6 @@ const formatCity = (city) => {
 }
 
 const SearchBar = () => {
-  const dispatch = useDispatch()
   const history = useHistory()
 
   const [term, setTerm] = useState('')
@@ -31,9 +28,7 @@ const SearchBar = () => {
 
   const onSubmit = (event) => {
     event.preventDefault()
-    console.log(list[0])
-
-    dispatch(dailyWeather(list[0].id))
+    history.push('/cities/' + list[0].id)
   }
 
   return (

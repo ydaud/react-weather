@@ -1,7 +1,6 @@
 import weatherService from '../services/weatherService'
 
 export const dailyWeather = (cityId) => {
-  console.log('REDUCED')
   return async dispatch => {
     const response = await weatherService.getWeather(cityId)
     dispatch({
@@ -14,8 +13,8 @@ export const dailyWeather = (cityId) => {
 const reducer = (state = null, action) => {
   switch (action.type) {
     case 'DAILY_WEATHER':
-      console.log('REDUCED')
-      return null
+      console.log(action.data)
+      return action.data
     default:
       return state
   }
